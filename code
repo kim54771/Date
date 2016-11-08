@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+char months[12][25] {
+    "January", "Febuary", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"
+    
+    
+    
+};
+
+void printSuffix(const char* num){
+    if(!num)
+    return;
+    printf(num);
+    size_t lastChar = strlen(num) - 1;
+    if (num[lastChar] == '1')
+        printf("st");
+    else if (num[lastChar] == '2')
+        printf("nd");
+    else if (num[lastChar] == '3')
+        printf("rd");
+    else
+        printf("th");
+    
+}
+
+int main()
+{
+       printf("Enter a date: ");
+       
+       // get the date
+       char date[11];
+       scanf("%10s", date);
+       
+       // get the year
+       char* token = strtok(date, "-./\\");
+       char* year = token;
+       
+       // get the month
+       token = strtok(NULL, "-./\\");
+       int monthNum = atoi(token);
+       
+       token = strtok(NULL, "-./\\");
+       char* day = token;
+       
+       printf("%s ", months[monthNum - 1]);
+       printSuffix(day);
+       printf(" %s\n", year);
+       
+ 
+ 
+ 
+ 
+}
